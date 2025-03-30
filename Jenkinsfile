@@ -1,17 +1,40 @@
 pipeline {
     agent any
 
+    environment {
+        REPO_URL = 'https://github.com/kaylinb2/XPerienceServer.git'
+    }
+
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git credentialsId: '23157542-1d1a-483e-bc03-b7e85a061afb', url: 'https://github.com/kaylinb2/XPerienceServer.git', branch: 'main'
+                git credentialsId: 'kaylinb2', url: "${REPO_URL}"
             }
         }
 
         stage('Build with Maven') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean install'
             }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t xperience-server .'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker rm -f xserver || true'
+                sh 'docker run -d --name xserver -p 8081:8080 xperience-server'
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed. Please check the logs.'
         }
     }
 }
