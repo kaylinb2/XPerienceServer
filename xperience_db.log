@@ -1,0 +1,82 @@
+Mar 19, 2025 3:36:29 AM xperience.XPerienceServerDB main
+INFO: XPerience Server (Database-Backed) started on port 8081
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Danooke#02/12/2025#8pm#Fusion of Karaoke and Dance#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: ✅ Accepted Event: Danooke
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Danooke#02/14/2025#9pm#Fusion of Dance and Karaoke#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Danooke (Duplicate Name in DB)
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Mimey#02/14/2025#5pm#Poetry read by a mime#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: ✅ Accepted Event: Mimey
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Alice#02/20/2025#7pm#Music Concert#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: ✅ Accepted Event: Alice
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Alice#02/21/2025#8pm#Live Band#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Alice (Duplicate Name in DB)
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Bob#02/21/2025#8pm#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Bob (Invalid Format)
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Charlie#02/22/2025|7pm|Poetry Reading#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Charlie (Invalid Format)
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: David#02/23/2025#6pm#Art Exhibition
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: ✅ Accepted Event: David
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Eva#02/25/2025#8pm#Talent#Show#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Eva (Invalid Format)
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Frank#02/26/2025#9pm#Comedy Night#
+Mar 19, 2025 3:37:50 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: ✅ Accepted Event: Frank
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Danooke#02/12/2025#8pm#Fusion of Karaoke and Dance#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Danooke (Duplicate Name in DB)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Danooke#02/14/2025#9pm#Fusion of Dance and Karaoke#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Danooke (Duplicate Name in DB)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Mimey#02/14/2025#5pm#Poetry read by a mime#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Mimey (Duplicate Name in DB)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Alice#02/20/2025#7pm#Music Concert#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Alice (Duplicate Name in DB)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Alice#02/21/2025#8pm#Live Band#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Alice (Duplicate Name in DB)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Bob#02/21/2025#8pm#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Bob (Invalid Format)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Charlie#02/22/2025|7pm|Poetry Reading#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Charlie (Invalid Format)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: David#02/23/2025#6pm#Art Exhibition
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: David (Duplicate Name in DB)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Eva#02/25/2025#8pm#Talent#Show#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Eva (Invalid Format)
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+INFO: Received: Frank#02/26/2025#9pm#Comedy Night#
+Mar 19, 2025 4:06:55 AM xperience.XPerienceServerDB$ClientHandler run
+WARNING: ❌ Rejected Event: Frank (Duplicate Name in DB)
