@@ -1,49 +1,42 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "xperience-server"
+        CONTAINER_NAME = "xserver"
+        JAR_NAME = "xperience-server-db-jar-with-dependencies.jar"
+    }
+
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                checkout scm
+                git 'https://github.com/kaylinb2/XPerienceServer.git'
             }
         }
 
-        stage('Build and Test with Maven') {
+        stage('Build with Maven') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean install'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t xperience-server .'
+                sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d --name xserver -p 9020:9020 xperience-server 9020 passwords.txt'
-            }
-        }
-
-        stage('Verify Container Logs') {
-            steps {
-                sh 'sleep 2 && docker logs xserver'
+                sh 'docker rm -f ${CONTAINER_NAME} || true'
+                sh 'docker run -d --name ${CONTAINER_NAME} -p 8081:8080 ${DOCKER_IMAGE}'
             }
         }
 
         stage('Copy JAR to ~/Program') {
             steps {
-                // Copies built JAR from Jenkins workspace to your local folder
-                sh 'cp target/app-jar-with-dependencies.jar /home/kaylinb2/Program/'
+                sh 'cp target/${JAR_NAME} /home/kaylinb2/Program/'
             }
-        }
-    }
-
-    post {
-        always {
-            // Clean up container after pipeline runs
-            sh 'docker rm -f xserver || true'
         }
     }
 }
