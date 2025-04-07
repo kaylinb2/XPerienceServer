@@ -1,0 +1,9 @@
+xperience/XPerienceServer.class
+xperience/EventStoreDB.class
+xperience/EventStoreMemory.class
+xperience/XPerienceTestClient.class
+xperience/PasswordList.class
+xperience/EventStore.class
+xperience/XPerienceServerDB.class
+xperience/XPerienceServerTest2.class
+xperience/Event.class
