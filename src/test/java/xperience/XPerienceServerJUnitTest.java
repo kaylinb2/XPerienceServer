@@ -45,8 +45,8 @@ class XPerienceServerJUnitTest {
     @BeforeAll
     static void setUp() {
         try {
-            server = Objects.requireNonNull(System.getProperty("server"));
-            port = Integer.parseInt(System.getProperty("port"));
+            server = Objects.requireNonNull(System.getProperty("server","localhost"));
+            port = Integer.parseInt(System.getProperty("port" ,"5001"));
         } catch (Exception ex) {
             System.err.println("Test setup failed: " + ex);
             throw ex;
