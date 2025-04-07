@@ -53,7 +53,7 @@ private static void handleClient(Socket socket, EventStore store, PasswordList p
             return;
         }
 
-        out.println("Aksept#");
+        out.println("Accept#");
         System.out.println("✅ Login accepted: " + username);
 
         // 📥 Receive and store events
@@ -76,7 +76,7 @@ private static void handleClient(Socket socket, EventStore store, PasswordList p
             int eventIndex = store.size();
             store.add(event);
 
-            out.println("Aksept#" + (eventIndex + 1) + "#");
+            out.println("Accept#" + (eventIndex + 1) + "#");
             System.out.println("📦 Stored event: " + event);
         }
     } catch (Exception e) {
