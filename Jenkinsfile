@@ -48,13 +48,16 @@ pipeline {
                    """
             }
         }
+stage('Copy Jar to Local Directory') {
+    steps {
+        // Step A: Ensure the directory exists
+        sh 'mkdir -p /var/lib/jenkins/Program'
+        
+        // Step B: Copy the jar
+        sh 'cp target/${JAR_NAME} /var/lib/jenkins/Program/'
+    }
+}
 
-        stage('Copy Jar to Local Directory') {
-            steps {
-                // Copy the built jar to ~/Program/
-                sh 'cp target/${JAR_NAME} ~/Program/'
-            }
-        }
     }
 
     post {
