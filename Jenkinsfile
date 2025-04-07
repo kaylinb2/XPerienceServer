@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKER_IMAGE   = "xperience-server"
         CONTAINER_NAME = "xserver"
-        // Dynamically pull PORT from Jenkins environment (fallback to 9020 if unset)
         PORT           = "${PORT_ENV ?: '9020'}"
         PASSWORD_FILE  = "passwords.txt"
         JAR_NAME       = "xperience-project-1.0-SNAPSHOT-jar-with-dependencies.jar"
@@ -41,6 +40,14 @@ pipeline {
         stage('Copy Jar to Local Directory') {
             steps {
                 sh 'cp target/${JAR_NAME} ~/Program/'
+            }
+        }
+
+        stage('Run Test Client') {
+            steps {
+                sh """
+                   docker exec ${CONTAINER_NAME} java -cp app.jar xperience.XPerienceTestClient localhost ${PORT} || exit 1
+                   """
             }
         }
     }
