@@ -20,87 +20,72 @@ import java.nio.charset.StandardCharsets;
 public class XPerienceTestClient {
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.err.println("⚠️ Usage: java xperience.XPerienceTestClient <host> <port>");
+            System.err.println("\u26a0\ufe0f Usage: java xperience.XPerienceTestClient <host> <port>");
             return;
         }
 
         String host = args[0];
         int port = Integer.parseInt(args[1]);
 
-        // Hard-coded credentials
         String username = "Safety";
         String password = "secure1";
 
-        // Multiple events to send
         String[] events = {
             "2025-04-07#10:00#FirstTestEvent#HelloWorld",
             "2025-04-07#14:30#SecondTestEvent#SomeDetails",
             "2025-04-07#16:00#ThirdTestEvent#MoreData"
         };
 
-        System.out.println("🔌 Connecting to XPerienceServer on " + host + ":" + port);
+        System.out.println("\uD83D\uDD0C Connecting to XPerienceServer on " + host + ":" + port);
 
         try (Socket socket = new Socket(host, port)) {
-            // Raw byte streams: no buffering or readLine
             InputStream in = socket.getInputStream();
             OutputStream out = socket.getOutputStream();
 
-            // 🧑 [send] username
-            System.out.println("🧑 [send] username: " + username);
+            // Send username
+            System.out.println("\uD83E\uDDD1 [send] username: " + username);
             out.write((username + "\n").getBytes(StandardCharsets.US_ASCII));
             out.flush();
 
-            // 🔐 [send] password
-            System.out.println("🔐 [send] password: " + password);
+            // Send password
+            System.out.println("\uD83D\uDD10 [send] password: " + password);
             out.write((password + "\n").getBytes(StandardCharsets.US_ASCII));
             out.flush();
 
-            // 📨 Read login response
+            // Read login response
             String loginResponse = readUntilNewline(in);
-            System.out.println("📨 Server login response: " + loginResponse);
+            System.out.println("\uD83D\uDCE8 Server login response: " + loginResponse);
 
-            if (!loginResponse.startsWith("Accept")) {
-                System.out.println("❌ Login rejected!");
-                return; // stop if login fails
-            } else {
-                System.out.println("✅ Login accepted: " + username);
+            // ❌ FORCE FAILURE if response is not exactly "Accept#"
+            if (!loginResponse.trim().equals("Accept#")) {
+                throw new RuntimeException("❌ Expected 'Accept#' but got '" + loginResponse + "'");
             }
 
-            // 📤 Send multiple events
+            System.out.println("\u2705 Login accepted: " + username);
+
+            // Send events
             for (String event : events) {
-                System.out.println("📤 [send] event: " + event);
+                System.out.println("\uD83D\uDCE4 [send] event: " + event);
                 out.write((event + "\n").getBytes(StandardCharsets.US_ASCII));
                 out.flush();
 
-                // 📝 Read each event response
                 String eventResp = readUntilNewline(in);
-                System.out.println("📨 Server event response: " + eventResp);
+                System.out.println("\uD83D\uDCE8 Server event response: " + eventResp);
             }
 
-            System.out.println("🔚 Finished sending all test events.");
+            System.out.println("\uD83D\uDD5A Finished sending all test events.");
 
         } catch (IOException e) {
-            System.err.println("💥 Client error: " + e.getMessage());
+            System.err.println("\uD83D\uDCA5 Client error: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    /**
-     * Reads bytes until encountering '\n'.
-     * No buffering or readLine.
-     */
     private static String readUntilNewline(InputStream in) throws IOException {
         StringBuilder sb = new StringBuilder();
         while (true) {
             int b = in.read();
-            if (b == -1) {
-                // Stream closed
-                break;
-            }
-            if (b == '\n') {
-                // Found newline => done
-                break;
-            }
+            if (b == -1 || b == '\n') break;
             sb.append((char) b);
         }
         return sb.toString().trim();
